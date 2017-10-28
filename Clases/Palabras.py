@@ -14,3 +14,8 @@ class Palabra(object):
         self.Fuente = pygame.font.SysFont("mariokartdsregular", tamanio)
         self.Palabra = self.Fuente.render(self.texto, True, Color)
         self.posX -= 1
+
+    def Escritura(self, Color, palabra):
+        self.texto = palabra
+        self.Fuente = pygame.font.SysFont("mariokartdsregular", 50)
+        self.Palabra = self.Fuente.render(self.texto, True, Color)

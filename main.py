@@ -25,8 +25,8 @@ Lista_Primer_Horacion = ["a", "g", "a", "r", "r", "a", "  ", "l", "a", "s", "  "
 Lista_Segunda_Horacion = ["s", "e", "  ", "e", "l", "  ", "m", "a", "s", "  ", "r", "a", "p", "i", "d", "o",
                           "  ", "e", "n", "  ", "l", "l", "e", "g", "a", "r"]
 
-Lista_Tercera_Horacion = ["m", "a", "t", "a", "  ", "t", "o", "d", "o", "  ", "l", "o", "  ",
-                          "q", "u", "e", "  ", "s", "e", "  ", "m", "u", "e", "v", "a"]
+Lista_Tercera_Horacion = ["c", "u", "i", "d", "a", "d", "o", "  ", "c", "o", "n", "  ", "l",
+                          "o", "s", "  ", "e", "n", "e", "m", "i", "g", "o", "s"]
 
 Primer_Horacion_texto = ""
 
@@ -110,7 +110,7 @@ while True:
         Tercera_Horacion.Escritura(Colores["Blanco"], Tercera_Horacion_texto)
         posicion_h3 += 1
 
-    if posicion_h3 >= 25:
+    if posicion_h3 >= 24:
         frames_escritura = frames_totales
         Tercera = False
 

@@ -15,9 +15,10 @@ ventana = Controlador.configurar_pantalla(ancho, alto)
 
 Controlador.rellenar_pantalla(ventana, Colores)
 
-Puntos = Palabra(150, 10, Colores["Blanco"], "ayuda  a  mario  a  llegar  al  poli", 0)
-
 reloj = Controlador.iniciar_reloj()
+
+Lista_Ayuda = ["a", "y", "u", "d", "a", "  ", "a", "  ", "m", "a", "r", "i","o","  ","a",
+                "  ","l","l","e","g","a","r","  ","a","l","  ","p","o","l","i",]
 
 Lista_Primer_Horacion = ["a", "g", "a", "r", "r", "a", "  ", "l", "a", "s", "  ", "m", "o", "n", "e", "d", "a", "s",
                          "  ", "q", "u", "e", "  ", "p", "u", "e", "d", "a", "s"]
@@ -27,6 +28,8 @@ Lista_Segunda_Horacion = ["s", "e", "  ", "e", "l", "  ", "m", "a", "s", "  ", "
 
 Lista_Tercera_Horacion = ["c", "u", "i", "d", "a", "d", "o", "  ", "c", "o", "n", "  ", "l",
                           "o", "s", "  ", "e", "n", "e", "m", "i", "g", "o", "s"]
+
+Ayuda_Texto = ""
 
 Primer_Horacion_texto = ""
 
@@ -38,11 +41,15 @@ frames_totales = 0
 
 frames_aux = 0
 
-Primer_Horacion = Palabra(100, 300, Colores["Blanco"], Primer_Horacion_texto, 50)
+Ayuda = Palabra(80, 100, Colores["Blanco"], Ayuda_Texto, 80)
 
-Segunda_Horacion = Palabra(100, 400, Colores["Blanco"], Segunda_Horacion_texto, 50)
+Primer_Horacion = Palabra(80, 300, Colores["Blanco"], Primer_Horacion_texto, 50)
 
-Tercera_Horacion = Palabra(100, 500, Colores["Blanco"], Tercera_Horacion_texto, 50)
+Segunda_Horacion = Palabra(80, 400, Colores["Blanco"], Segunda_Horacion_texto, 50)
+
+Tercera_Horacion = Palabra(80, 500, Colores["Blanco"], Tercera_Horacion_texto, 50)
+
+posicion_Ayuda = 0
 
 posicion_h1 = 0
 
@@ -54,6 +61,8 @@ frames_escritura = 0
 
 crecimiento = 0
 
+Titulo = True
+
 Primera = False
 
 Segunda = False
@@ -62,30 +71,27 @@ Tercera = False
 
 aux = True
 
-# Mostrador_Puntos_Habilidad = Palabra(340, 395, Colores["Blanco"], str(Sumador), 60)
-#
-# Puntuacion_Total = Palabra(740, 45, Colores["Blanco"], str(Puntos_Totales), 80)
-
 while True:
     Controlador.set_fps(reloj, FPS)
     Controlador.buscar_eventos()
     Controlador.rellenar_pantalla(ventana, Colores)
-    Base.Grupo.draw(ventana)
 
-    if frames_aux + 1 < frames_totales and crecimiento < 80:
-        frames_aux = frames_totales
-        Puntos.Aparecer(crecimiento, Colores["Blanco"])
-        crecimiento += 1
+    if Titulo and frames_escritura + 5 < frames_totales:
+        frames_escritura = frames_totales
+        Ayuda_Texto += Lista_Ayuda[posicion_Ayuda]
+        Ayuda.Escritura(Colores["Blanco"], Ayuda_Texto, True)
+        posicion_Ayuda += 1
 
-    if aux and crecimiento >= 80:
+    if posicion_Ayuda >= 30 and aux:
         Primera = True
         frames_escritura = frames_totales
+        Titulo = False
         aux = False
 
-    if Primera and frames_escritura + 7 < frames_totales:
+    if Primera and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
         Primer_Horacion_texto += Lista_Primer_Horacion[posicion_h1]
-        Primer_Horacion.Escritura(Colores["Blanco"], Primer_Horacion_texto)
+        Primer_Horacion.Escritura(Colores["Blanco"], Primer_Horacion_texto, False)
         posicion_h1 += 1
 
     if Primera and posicion_h1 >= 29:
@@ -93,10 +99,10 @@ while True:
         Segunda = True
         Primera = False
 
-    if Segunda and frames_escritura + 7 < frames_totales:
+    if Segunda and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
         Segunda_Horacion_texto += Lista_Segunda_Horacion[posicion_h2]
-        Segunda_Horacion.Escritura(Colores["Blanco"], Segunda_Horacion_texto)
+        Segunda_Horacion.Escritura(Colores["Blanco"], Segunda_Horacion_texto, False)
         posicion_h2 += 1
 
     if Segunda and posicion_h2 >= 26:
@@ -104,19 +110,19 @@ while True:
         Segunda = False
         Tercera = True
 
-    if Tercera and frames_escritura + 7 < frames_totales:
+    if Tercera and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
         Tercera_Horacion_texto += Lista_Tercera_Horacion[posicion_h3]
-        Tercera_Horacion.Escritura(Colores["Blanco"], Tercera_Horacion_texto)
+        Tercera_Horacion.Escritura(Colores["Blanco"], Tercera_Horacion_texto, False)
         posicion_h3 += 1
 
     if posicion_h3 >= 24:
         frames_escritura = frames_totales
         Tercera = False
 
+    ventana.blit(Ayuda.Palabra, (Ayuda.posX, Ayuda.posY))
     ventana.blit(Primer_Horacion.Palabra, (Primer_Horacion.posX, Primer_Horacion.posY))
     ventana.blit(Segunda_Horacion.Palabra, (Segunda_Horacion.posX, Segunda_Horacion.posY))
     ventana.blit(Tercera_Horacion.Palabra, (Tercera_Horacion.posX, Tercera_Horacion.posY))
-    ventana.blit(Puntos.Palabra, (Puntos.posX, Puntos.posX))
     pygame.display.update()
     frames_totales += 1

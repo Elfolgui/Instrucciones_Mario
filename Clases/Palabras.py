@@ -15,7 +15,12 @@ class Palabra(object):
         self.Palabra = self.Fuente.render(self.texto, True, Color)
         self.posX -= 1
 
-    def Escritura(self, Color, palabra):
-        self.texto = palabra
-        self.Fuente = pygame.font.SysFont("mariokartdsregular", 50)
-        self.Palabra = self.Fuente.render(self.texto, True, Color)
+    def Escritura(self, Color, palabra, Diferenciador):
+        if Diferenciador:
+            self.texto = palabra
+            self.Fuente = pygame.font.SysFont("mariokartdsregular", 80)
+            self.Palabra = self.Fuente.render(self.texto, True, Color)
+        if not Diferenciador:
+            self.texto = palabra
+            self.Fuente = pygame.font.SysFont("mariokartdsregular", 50)
+            self.Palabra = self.Fuente.render(self.texto, True, Color)

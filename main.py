@@ -20,22 +20,22 @@ reloj = Controlador.iniciar_reloj()
 Lista_Ayuda = ["a", "y", "u", "d", "a", "  ", "a", "  ", "m", "a", "r", "i","o","  ","a",
                 "  ","l","l","e","g","a","r","  ","a","l","  ","p","o","l","i",]
 
-Lista_Primer_Horacion = ["a", "g", "a", "r", "r", "a", "  ", "l", "a", "s", "  ", "m", "o", "n", "e", "d", "a", "s",
+Lista_Primer_Oracion = ["a", "g", "a", "r", "r", "a", "  ", "l", "a", "s", "  ", "m", "o", "n", "e", "d", "a", "s",
                          "  ", "q", "u", "e", "  ", "p", "u", "e", "d", "a", "s"]
 
-Lista_Segunda_Horacion = ["s", "e", "  ", "e", "l", "  ", "m", "a", "s", "  ", "r", "a", "p", "i", "d", "o",
+Lista_Segunda_Oracion = ["s", "e", "  ", "e", "l", "  ", "m", "a", "s", "  ", "r", "a", "p", "i", "d", "o",
                           "  ", "e", "n", "  ", "l", "l", "e", "g", "a", "r"]
 
-Lista_Tercera_Horacion = ["c", "u", "i", "d", "a", "d", "o", "  ", "c", "o", "n", "  ", "l",
+Lista_Tercera_Oracion = ["c", "u", "i", "d", "a", "d", "o", "  ", "c", "o", "n", "  ", "l",
                           "o", "s", "  ", "e", "n", "e", "m", "i", "g", "o", "s"]
 
 Ayuda_Texto = ""
 
-Primer_Horacion_texto = ""
+Primer_Oracion_texto = ""
 
-Segunda_Horacion_texto = ""
+Segunda_Oracion_texto = ""
 
-Tercera_Horacion_texto = ""
+Tercera_Oracion_texto = ""
 
 frames_totales = 0
 
@@ -43,11 +43,11 @@ frames_aux = 0
 
 Ayuda = Palabra(80, 100, Colores["Blanco"], Ayuda_Texto, 80)
 
-Primer_Horacion = Palabra(80, 300, Colores["Blanco"], Primer_Horacion_texto, 50)
+Primer_Oracion = Palabra(80, 300, Colores["Blanco"], Primer_Oracion_texto, 50)
 
-Segunda_Horacion = Palabra(80, 400, Colores["Blanco"], Segunda_Horacion_texto, 50)
+Segunda_Oracion = Palabra(80, 400, Colores["Blanco"], Segunda_Oracion_texto, 50)
 
-Tercera_Horacion = Palabra(80, 500, Colores["Blanco"], Tercera_Horacion_texto, 50)
+Tercera_Oracion = Palabra(80, 500, Colores["Blanco"], Tercera_Oracion_texto, 50)
 
 posicion_Ayuda = 0
 
@@ -90,8 +90,8 @@ while True:
 
     if Primera and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
-        Primer_Horacion_texto += Lista_Primer_Horacion[posicion_h1]
-        Primer_Horacion.Escritura(Colores["Blanco"], Primer_Horacion_texto, False)
+        Primer_Oracion_texto += Lista_Primer_Oracion[posicion_h1]
+        Primer_Oracion.Escritura(Colores["Blanco"], Primer_Oracion_texto, False)
         posicion_h1 += 1
 
     if Primera and posicion_h1 >= 29:
@@ -101,8 +101,8 @@ while True:
 
     if Segunda and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
-        Segunda_Horacion_texto += Lista_Segunda_Horacion[posicion_h2]
-        Segunda_Horacion.Escritura(Colores["Blanco"], Segunda_Horacion_texto, False)
+        Segunda_Oracion_texto += Lista_Segunda_Oracion[posicion_h2]
+        Segunda_Oracion.Escritura(Colores["Blanco"], Segunda_Oracion_texto, False)
         posicion_h2 += 1
 
     if Segunda and posicion_h2 >= 26:
@@ -112,8 +112,8 @@ while True:
 
     if Tercera and frames_escritura + 5 < frames_totales:
         frames_escritura = frames_totales
-        Tercera_Horacion_texto += Lista_Tercera_Horacion[posicion_h3]
-        Tercera_Horacion.Escritura(Colores["Blanco"], Tercera_Horacion_texto, False)
+        Tercera_Oracion_texto += Lista_Tercera_Oracion[posicion_h3]
+        Tercera_Oracion.Escritura(Colores["Blanco"], Tercera_Oracion_texto, False)
         posicion_h3 += 1
 
     if posicion_h3 >= 24:
@@ -121,8 +121,8 @@ while True:
         Tercera = False
 
     ventana.blit(Ayuda.Palabra, (Ayuda.posX, Ayuda.posY))
-    ventana.blit(Primer_Horacion.Palabra, (Primer_Horacion.posX, Primer_Horacion.posY))
-    ventana.blit(Segunda_Horacion.Palabra, (Segunda_Horacion.posX, Segunda_Horacion.posY))
-    ventana.blit(Tercera_Horacion.Palabra, (Tercera_Horacion.posX, Tercera_Horacion.posY))
+    ventana.blit(Primer_Oracion.Palabra, (Primer_Oracion.posX, Primer_Oracion.posY))
+    ventana.blit(Segunda_Oracion.Palabra, (Segunda_Oracion.posX, Segunda_Oracion.posY))
+    ventana.blit(Tercera_Oracion.Palabra, (Tercera_Oracion.posX, Tercera_Oracion.posY))
     pygame.display.update()
     frames_totales += 1
